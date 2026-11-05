@@ -28,7 +28,15 @@ function CloseIcon() {
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const panelId = useId();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -38,8 +46,15 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-ivory/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-[88rem] items-center justify-between gap-6 px-5 py-4 sm:px-8 lg:px-12">
+    <header
+      className={cn(
+        "sticky top-0 z-50 border-b transition-[background-color,box-shadow,border-color] duration-300",
+        scrolled
+          ? "border-border/90 bg-white/95 shadow-sm shadow-brand/5 backdrop-blur-md"
+          : "border-border/60 bg-surface/90 backdrop-blur-sm",
+      )}
+    >
+      <div className="mx-auto flex max-w-[88rem] items-center justify-between gap-6 px-5 py-3.5 sm:px-8 lg:px-12">
         <Link href="/" className="flex min-w-0 items-center gap-3">
           <Image
             src={asset("index_r1_c1.gif")}
@@ -50,17 +65,16 @@ export function Header() {
             priority
           />
           <span className="hidden min-w-0 flex-col sm:flex">
-            <span className="truncate font-display text-sm font-semibold tracking-tight text-graphite sm:text-base">
+            <span className="truncate font-display text-sm font-semibold tracking-tight text-ink sm:text-base">
               {site.shortName}
             </span>
-            <span className="truncate text-xs text-muted">Est. {site.established}</span>
+            <span className="truncate text-xs text-ink-muted">
+              Est. {site.established}
+            </span>
           </span>
         </Link>
 
-        <nav
-          className="hidden items-center gap-1 lg:flex"
-          aria-label="Primary"
-        >
+        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
           {mainNav.map((item) => {
             const active =
               item.href === "/"
@@ -70,9 +84,10 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
+                data-active={active ? "true" : "false"}
                 className={cn(
-                  "rounded-sm px-3 py-2 text-sm font-medium text-graphite/80 transition-colors hover:text-navy",
-                  active && "text-navy",
+                  "nav-link rounded-sm px-3 py-2.5 text-sm font-medium transition-colors duration-200",
+                  active ? "text-brand" : "text-ink/75 hover:text-brand",
                 )}
               >
                 {item.label}
@@ -82,14 +97,14 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <ButtonLink href="/contact/" variant="primary">
+          <ButtonLink href="/contact/" variant="accent">
             Enquire
           </ButtonLink>
         </div>
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-sm border border-border bg-white p-2.5 text-graphite lg:hidden"
+          className="inline-flex items-center justify-center rounded-sm border border-border bg-white p-2.5 text-ink transition hover:border-cobalt/40 lg:hidden"
           aria-expanded={open}
           aria-controls={panelId}
           onClick={() => setOpen((v) => !v)}
@@ -101,26 +116,38 @@ export function Header() {
 
       <div
         id={panelId}
-        hidden={!open}
-        className="border-t border-border bg-ivory lg:hidden"
+        className="mobile-drawer border-t border-border bg-white lg:hidden"
+        data-open={open ? "true" : "false"}
+        aria-hidden={!open}
       >
-        <nav className="flex flex-col px-5 py-4 sm:px-8" aria-label="Mobile">
-          {mainNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="border-b border-border/60 py-3.5 text-base font-medium text-graphite"
-            >
-              {item.label}
-            </Link>
-          ))}
-          <div className="pt-4">
-            <ButtonLink href="/contact/" className="w-full">
-              Enquire
-            </ButtonLink>
-          </div>
-        </nav>
+        <div>
+          <nav className="flex flex-col px-5 py-4 sm:px-8" aria-label="Mobile">
+            {mainNav.map((item) => {
+              const active =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    "border-b border-border/60 py-3.5 text-base font-medium transition-colors",
+                    active ? "text-brand" : "text-ink hover:text-cobalt",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            <div className="pt-4">
+              <ButtonLink href="/contact/" variant="accent" className="w-full">
+                Enquire
+              </ButtonLink>
+            </div>
+          </nav>
+        </div>
       </div>
     </header>
   );
