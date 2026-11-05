@@ -18,7 +18,7 @@ export const projects: ProjectRecord[] = [
     industry: "Mining / Government",
     location: "Mata-No-Madh, Kutch, Gujarat",
     featured: true,
-    image: "photo6.jpg",
+    image: "project-gmdc-mining.jpg",
     summary:
       "E-governance initiative by the Government of Gujarat Department of Mines to computerize lignite mines, validate dispatches and reduce unauthorized access using RFID, CCTV, weighbridges and integrated transaction capture.",
     scope:
@@ -31,7 +31,7 @@ export const projects: ProjectRecord[] = [
     industry: "Transport / Government",
     location: "Gujarat",
     featured: true,
-    image: "photo5.jpg",
+    image: "project-rto-checkpost.jpg",
     summary:
       "Automation of RTO weighbridge check posts to monitor commercial vehicle weight, capture violations and improve revenue collection across Gujarat highways.",
     scope:
@@ -44,7 +44,7 @@ export const projects: ProjectRecord[] = [
     industry: "Oil and gas",
     location: "Hazira, Gujarat",
     featured: true,
-    image: "photo3.jpg",
+    image: "project-lng-cctv.jpg",
     summary:
       "CCTV control installation as executed for the LNG Hazira project (as documented on the company areas-of-operation page).",
   },
@@ -54,7 +54,7 @@ export const projects: ProjectRecord[] = [
     client: "Shell LNG, Hazira",
     industry: "Oil and gas",
     location: "Hazira, Gujarat",
-    image: "photo4.jpg",
+    image: "project-lng-praesideo.jpg",
     summary:
       "Praesideo announcement system controls as installed in the LNG Hazira project.",
   },
@@ -62,7 +62,7 @@ export const projects: ProjectRecord[] = [
     slug: "power-plant-high-mast",
     title: "High mast installation in a power plant",
     industry: "Power",
-    image: "photo1.jpg",
+    image: "project-power-highmast.jpg",
     summary:
       "High mast lighting installation at a power plant (project photograph from company profile).",
   },
@@ -70,7 +70,7 @@ export const projects: ProjectRecord[] = [
     slug: "rto-check-post-wiring",
     title: "R.T.O. check post job",
     industry: "Transport",
-    image: "photo6.jpg",
+    image: "project-rto-checkpost.jpg",
     summary: "CCTV and automation wiring for an RTO check post installation.",
   },
 ];

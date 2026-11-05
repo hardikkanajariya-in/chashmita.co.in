@@ -56,8 +56,8 @@ export function Hero() {
         >
           <div className="relative aspect-[4/3] min-h-[14rem] lg:aspect-[16/11]">
             <Image
-              src={asset("photo5.jpg")}
-              alt="Industrial CCTV and check post installation"
+              src={asset("hero-control-room.jpg")}
+              alt="Industrial SCADA and CCTV surveillance telemetry control center"
               fill
               className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 58vw"
@@ -65,7 +65,7 @@ export function Hero() {
             />
           </div>
           <figcaption>
-            R.T.O. check post installation, company project photograph
+            Industrial SCADA and CCTV surveillance control operations
           </figcaption>
         </figure>
       </Container>

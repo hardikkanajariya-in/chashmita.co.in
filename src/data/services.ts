@@ -4,44 +4,44 @@ export const coreCapabilities = [
     title: "Design and engineering",
     detail:
       "Turnkey project engineering supported by principal design software and technical assistance.",
-    image: "photo4.jpg",
+    image: "project-lng-praesideo.jpg",
   },
   {
     title: "Electrical systems",
     detail: "Electrical system design, supply and installation for industrial projects.",
-    image: "photo3.jpg",
+    image: "industry-power.jpg",
   },
   {
     title: "Industrial lighting",
     detail: "Lighting systems for plants, infrastructure and hazardous areas.",
-    image: "photo1.jpg",
+    image: "project-power-highmast.jpg",
   },
   {
     title: "Communication systems",
     detail: "Plant communication and announcement systems for industrial environments.",
-    image: "photo4.jpg",
+    image: "project-lng-praesideo.jpg",
   },
   {
     title: "CCTV and security systems",
     detail:
       "Security, surveillance, access control, perimeter protection and related integration.",
-    image: "photo5.jpg",
+    image: "hero-control-room.jpg",
   },
   {
     title: "Supply and installation",
     detail: "End-to-end supply chain management and site installation.",
-    image: "layout_16.jpg",
+    image: "industry-oil-gas.jpg",
   },
   {
     title: "Testing and commissioning",
     detail: "System testing, commissioning and handover to operations.",
-    image: "photo6.jpg",
+    image: "project-rto-checkpost.jpg",
   },
   {
     title: "Maintenance and after-sales service",
     detail:
       "Philips-trained service support and annual maintenance contracts (comprehensive and non-comprehensive).",
-    image: "photo3.jpg",
+    image: "project-lng-cctv.jpg",
   },
 ] as const;
 

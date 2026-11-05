@@ -13,15 +13,15 @@ export function CompanyIntroduction() {
           <figure className="photo-card">
             <div className="relative aspect-[3/4] max-h-[32rem] min-h-[16rem]">
               <Image
-                src={asset("photo3.jpg")}
-                alt="CCTV controls installation at LNG Hazira project"
+                src={asset("project-lng-cctv.jpg")}
+                alt="CCTV and telemetry control systems installation at LNG Hazira project"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 38vw"
               />
             </div>
             <figcaption>
-              LNG Hazira, CCTV controls installation
+              LNG Hazira, CCTV and telemetry systems installation
             </figcaption>
           </figure>
         </Reveal>
