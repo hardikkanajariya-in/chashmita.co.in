@@ -1,41 +1,55 @@
 import { cn } from "@/lib/cn";
 
 type SectionHeadingProps = {
-  eyebrow?: string;
+  kicker?: string;
   title: string;
   description?: string;
   className?: string;
   align?: "left" | "center";
+  inverted?: boolean;
 };
 
 export function SectionHeading({
-  eyebrow,
+  kicker,
   title,
   description,
   className,
   align = "left",
+  inverted = false,
 }: SectionHeadingProps) {
   return (
     <div
       className={cn(
-        align === "center" && "text-center",
-        "max-w-3xl",
+        align === "center" && "mx-auto text-center",
+        "max-w-3xl min-w-0",
         className,
       )}
     >
-      {eyebrow ? (
-        <>
-          <p className="mb-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-turquoise">
-            {eyebrow}
-          </p>
-          <div className="section-rule mb-5 w-16" />
-        </>
+      {kicker ? (
+        <p
+          className={cn(
+            "mb-3 text-sm font-medium",
+            inverted ? "text-paper/90" : "text-muted",
+          )}
+        >
+          {kicker}
+        </p>
       ) : null}
-      <h2 className="font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl lg:text-[2.85rem]">
+      <h2
+        className={cn(
+          "font-display text-section leading-none",
+          inverted ? "text-paper" : "text-ink",
+        )}
+      >
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 text-base leading-relaxed text-ink-muted sm:text-lg">
+        <p
+          className={cn(
+            "lead mt-4",
+            inverted ? "text-paper/95" : "text-muted",
+          )}
+        >
           {description}
         </p>
       ) : null}

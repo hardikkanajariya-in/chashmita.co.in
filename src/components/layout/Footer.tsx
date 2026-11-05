@@ -6,27 +6,24 @@ import { Container } from "@/components/ui/Container";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-ink text-white">
-      <Container className="py-14 lg:py-16">
+    <footer className="band-ink border-t border-ink">
+      <Container className="section-pad">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-4">
-            <p className="font-display text-lg font-semibold">{site.name}</p>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/75">
+          <div className="lg:col-span-4 min-w-0">
+            <p className="font-display text-title text-paper">{site.name}</p>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-paper/75">
               Turnkey engineering for electrical, lighting, communication and
-              security systems — from design through commissioning and service.
+              security systems, from design through commissioning and service.
             </p>
-            <div className="section-rule mt-6 w-12" />
           </div>
-          <div className="lg:col-span-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-turquoise">
-              Navigation
-            </p>
+          <div className="lg:col-span-2 min-w-0">
+            <p className="text-sm font-medium text-paper/85">Navigation</p>
             <ul className="mt-4 space-y-2 text-sm">
               {mainNav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-white/80 transition-colors hover:text-amber"
+                    className="text-paper/80 underline decoration-paper/25 underline-offset-[0.2em] transition hover:decoration-accent hover:text-paper"
                   >
                     {item.label}
                   </Link>
@@ -34,21 +31,17 @@ export function Footer() {
               ))}
             </ul>
           </div>
-          <div className="lg:col-span-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-turquoise">
-              Capabilities
-            </p>
-            <ul className="mt-4 grid gap-2 text-sm text-white/75">
+          <div className="lg:col-span-3 min-w-0">
+            <p className="text-sm font-medium text-paper/85">Capabilities</p>
+            <ul className="mt-4 grid gap-2 text-sm text-paper/75">
               {coreCapabilities.slice(0, 6).map((cap) => (
                 <li key={cap.title}>{cap.title}</li>
               ))}
             </ul>
           </div>
-          <div className="lg:col-span-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-turquoise">
-              Contact
-            </p>
-            <address className="mt-4 space-y-3 text-sm not-italic leading-relaxed text-white/80">
+          <div className="lg:col-span-3 min-w-0">
+            <p className="text-sm font-medium text-paper/85">Contact</p>
+            <address className="mt-4 space-y-3 text-sm not-italic leading-relaxed text-paper/80">
               <p>
                 {contact.company}
                 <br />
@@ -62,9 +55,13 @@ export function Footer() {
               <p>
                 Phone:{" "}
                 {contact.phoneDisplay.map((p) => (
-                  <span key={p} className="block">
+                  <a
+                    key={p}
+                    href={`tel:${p.replace(/\s|\+/g, "")}`}
+                    className="block underline decoration-paper/30 underline-offset-[0.2em] hover:decoration-accent"
+                  >
                     {p}
-                  </span>
+                  </a>
                 ))}
               </p>
               <p>Fax: +91 {contact.fax}</p>
@@ -73,7 +70,7 @@ export function Footer() {
                   <a
                     key={email}
                     href={`mailto:${email}`}
-                    className="block text-white transition hover:text-amber"
+                    className="block underline decoration-paper/30 underline-offset-[0.2em] hover:decoration-accent"
                   >
                     {email}
                   </a>
@@ -82,8 +79,8 @@ export function Footer() {
             </address>
           </div>
         </div>
-        <p className="mt-12 border-t border-white/10 pt-6 text-xs text-white/55">
-          © 2026 {site.name}. All rights reserved.
+        <p className="mt-12 border-t border-paper/15 pt-6 text-xs text-paper/75">
+          © 2026 {site.name}.
         </p>
       </Container>
     </footer>

@@ -1,31 +1,39 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "@/components/ui/Container";
+import { contact } from "@/lib/site";
 import { Reveal } from "@/components/motion/Reveal";
 
 export function ContactCTA() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-brand via-[#1a4563] to-cobalt py-16 text-white lg:py-20">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-30"
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg, transparent 0%, rgba(32,166,166,0.15) 50%, transparent 100%)",
-        }}
-      />
-      <Container className="relative">
+    <section className="band-ink section-pad border-t border-ink">
+      <Container>
         <Reveal>
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-xl">
-              <h2 className="font-display text-3xl font-semibold sm:text-4xl">
-                Have an engineering requirement?
+          <div className="flex min-w-0 flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+            <div className="min-w-0 max-w-xl">
+              <h2 className="font-display text-section leading-none text-paper">
+                Engineering requirement?
               </h2>
-              <p className="mt-3 text-base text-white/85">
+              <p className="lead mt-4 text-paper/95">
                 Reach our Vadodara office for project enquiries, commissioning
                 support or service contracts.
               </p>
+              <p className="mt-4 text-sm text-paper/90">
+                <a
+                  href={`mailto:${contact.emails[0]}`}
+                  className="underline decoration-paper/30 underline-offset-[0.2em] hover:decoration-accent"
+                >
+                  {contact.emails[0]}
+                </a>
+                ,{" "}
+                <a
+                  href={`tel:${contact.phones[0].replace(/\s/g, "")}`}
+                  className="underline decoration-paper/30 underline-offset-[0.2em] hover:decoration-accent"
+                >
+                  {contact.phoneDisplay[0]}
+                </a>
+              </p>
             </div>
-            <ButtonLink href="/contact/" variant="accent">
+            <ButtonLink href="/contact/" variant="onInk">
               Get in touch
             </ButtonLink>
           </div>

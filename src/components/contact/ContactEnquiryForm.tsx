@@ -3,12 +3,9 @@
 import { useState } from "react";
 import { contact } from "@/lib/site";
 import { cn } from "@/lib/cn";
-import { CtaArrow } from "@/components/ui/ButtonLink";
 
 /**
  * Static-hosting enquiry form. Submits via mailto (no server required).
- * For hosted form endpoints (Formspree, Netlify Forms, etc.), replace handleSubmit
- * with a POST to your configured endpoint.
  */
 export function ContactEnquiryForm() {
   const [name, setName] = useState("");
@@ -33,8 +30,8 @@ export function ContactEnquiryForm() {
 
   const fieldClass = (field: string, valid: boolean) =>
     cn(
-      "field-input w-full bg-white px-4 py-3 text-sm text-ink",
-      touched[field] && !valid && "border-red-600",
+      "field-input w-full px-4 py-3 text-sm text-ink",
+      touched[field] && !valid && "border-[var(--color-error)]",
     );
 
   const emailValid = email.includes("@") && email.includes(".");
@@ -43,7 +40,7 @@ export function ContactEnquiryForm() {
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       {submitted ? (
         <p
-          className="border border-turquoise/40 bg-surface-alt px-4 py-3 text-sm text-ink"
+          className="border border-ink bg-paper-2 px-4 py-3 text-sm text-ink"
           role="status"
         >
           Opening your email client to send the enquiry to {contact.emails[0]}.
@@ -84,7 +81,7 @@ export function ContactEnquiryForm() {
           name="phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          className="field-input w-full bg-white px-4 py-3 text-sm text-ink"
+          className="field-input w-full px-4 py-3 text-sm text-ink"
           autoComplete="tel"
         />
       </label>
@@ -102,10 +99,9 @@ export function ContactEnquiryForm() {
       </label>
       <button
         type="submit"
-        className="group inline-flex items-center gap-2 bg-brand px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#1e4a6b] active:scale-[0.98]"
+        className="inline-flex items-center justify-center bg-ink px-6 py-3.5 text-sm font-medium text-paper transition hover:bg-ink-2 active:translate-y-px"
       >
         Send enquiry
-        <CtaArrow className="text-white" />
       </button>
     </form>
   );

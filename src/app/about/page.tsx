@@ -14,11 +14,11 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About"
+        kicker="About"
         title="Engineering company profile"
         description={`Established in ${companyIntro.established}. ${companyIntro.summary}`}
       />
-      <section className="py-14 lg:py-20">
+      <section className="section-pad">
         <Container className="max-w-3xl space-y-6 text-base leading-relaxed text-muted">
           {companyIntro.paragraphs.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>

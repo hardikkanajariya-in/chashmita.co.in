@@ -5,34 +5,33 @@ import { Reveal } from "@/components/motion/Reveal";
 
 export function Experience() {
   return (
-    <section className="relative overflow-hidden bg-brand py-16 text-white lg:py-24">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-20 top-0 h-72 w-72 rounded-full bg-cobalt/30 blur-3xl"
-      />
-      <Container className="relative grid gap-12 lg:grid-cols-12 lg:gap-16">
-        <Reveal className="lg:col-span-5">
+    <section className="band-ink section-pad">
+      <Container className="grid min-w-0 gap-12 lg:grid-cols-12 lg:gap-16">
+        <Reveal className="min-w-0 lg:col-span-5">
           <SectionHeading
-            eyebrow="Experience"
-            title="Project execution and support"
+            kicker="Execution and service"
+            title="Project delivery"
             description="Engineering leadership, commissioning and maintenance capabilities documented in the company profile."
-            className="[&_h2]:text-white [&_p]:text-white/80 [&_span]:text-turquoise"
+            inverted
           />
         </Reveal>
-        <div className="space-y-8 lg:col-span-7">
-          <ul className="grid gap-4 sm:grid-cols-2">
+        <div className="min-w-0 space-y-8 lg:col-span-7">
+          <ol className="grid min-w-0 gap-4 sm:grid-cols-2">
             {strengths.map((item, index) => (
               <li key={item}>
-                <Reveal delay={index * 70}>
-                  <div className="card-lift h-full border border-white/15 bg-white/10 p-5 text-sm leading-relaxed text-white/90">
-                    {item}
+                <Reveal delay={index * 60}>
+                  <div className="spec-card h-full p-5 text-sm leading-relaxed text-ink">
+                    <span className="font-outlier text-xs text-accent">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <p className="mt-2 text-ink">{item}</p>
                   </div>
                 </Reveal>
               </li>
             ))}
-          </ul>
-          <Reveal delay={200}>
-            <p className="text-sm leading-relaxed text-white/75">
+          </ol>
+          <Reveal delay={180}>
+            <p className="text-sm leading-relaxed text-paper/90">
               {companyIntro.paragraphs[3]}
             </p>
           </Reveal>

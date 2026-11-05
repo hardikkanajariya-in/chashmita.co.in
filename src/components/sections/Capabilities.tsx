@@ -16,17 +16,17 @@ export function Capabilities() {
   const activate = useCallback((index: number) => setActive(index), []);
 
   return (
-    <section className="border-y border-border bg-surface py-16 lg:py-24">
+    <section className="section-pad border-y border-ink bg-paper">
       <Container>
         <Reveal>
           <SectionHeading
-            eyebrow="Capabilities"
+            kicker="What we execute"
             title="Engineering scope"
-            description="End-to-end execution aligned with the company’s documented turnkey role and areas of operation."
+            description="End-to-end execution aligned with the company documented turnkey role and areas of operation."
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-12 lg:gap-10">
+        <div className="mt-12 grid min-w-0 gap-8 lg:grid-cols-12 lg:gap-10">
           <ul className="flex flex-col gap-2 lg:col-span-5">
             {coreCapabilities.map((item, index) => {
               const isActive = index === active;
@@ -39,16 +39,14 @@ export function Capabilities() {
                     onClick={() => activate(index)}
                     aria-pressed={isActive}
                     className={cn(
-                      "w-full border px-4 py-4 text-left transition-[border-color,background-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
-                      isActive
-                        ? "border-cobalt/50 bg-surface-alt shadow-sm"
-                        : "border-border bg-white hover:border-cobalt/30",
+                      "spec-card w-full px-4 py-4 text-left active:translate-y-px",
+                      isActive && "shadow-[14px_14px_0_var(--color-ink)]",
                     )}
                   >
-                    <span className="font-display text-xs font-semibold text-amber">
+                    <span className="font-outlier text-xs text-accent">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="mt-1 block font-display text-base font-semibold text-ink">
+                    <span className="mt-1 block font-display text-title text-ink">
                       {item.title}
                     </span>
                   </button>
@@ -57,30 +55,27 @@ export function Capabilities() {
             })}
           </ul>
 
-          <div className="relative overflow-hidden border border-border bg-brand lg:col-span-7 lg:min-h-[28rem]">
-            <div className="absolute inset-0 image-zoom">
+          <figure className="photo-card relative min-w-0 lg:col-span-7 lg:min-h-[28rem]">
+            <div className="relative min-h-[18rem] flex-1 lg:min-h-[24rem]">
               <Image
                 key={current.image}
                 src={asset(current.image)}
                 alt=""
                 fill
-                className="image-zoom-inner object-cover opacity-80"
+                className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            <div className="relative flex h-full flex-col justify-end bg-gradient-to-t from-brand via-brand/85 to-brand/20 p-8 text-white lg:p-10">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-turquoise">
-                {String(active + 1).padStart(2, "0")} — Capability detail
+            <figcaption className="space-y-2">
+              <p className="font-outlier text-xs text-accent">
+                {String(active + 1).padStart(2, "0")}
               </p>
-              <h3 className="mt-3 font-display text-2xl font-semibold">
-                {current.title}
-              </h3>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/85">
+              <p className="font-display text-title text-ink">{current.title}</p>
+              <p className="text-sm leading-relaxed text-muted">
                 {current.detail}
               </p>
-              <div className="section-rule mt-8 w-24" />
-            </div>
-          </div>
+            </figcaption>
+          </figure>
         </div>
       </Container>
     </section>

@@ -32,11 +32,11 @@ export default function IndustriesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Industries"
+        kicker="Industries"
         title="Sector experience"
         description="Industry groupings referenced in the company customer list and site navigation."
       />
-      <section className="py-14 lg:py-20">
+      <section className="section-pad">
         <Container>
           <ul className="grid gap-10 lg:grid-cols-2">
             {industrySectors.map((sector) => {
@@ -55,7 +55,7 @@ export default function IndustriesPage() {
                 <li
                   key={sector.id}
                   id={sector.id}
-                  className="grid gap-6 border border-border bg-white sm:grid-cols-5"
+                  className="spec-card grid min-w-0 sm:grid-cols-5"
                 >
                   <div className="relative min-h-[12rem] sm:col-span-2">
                     {sector.image ? (
@@ -69,7 +69,7 @@ export default function IndustriesPage() {
                     ) : null}
                   </div>
                   <div className="p-6 sm:col-span-3">
-                    <h2 className="font-display text-xl font-semibold text-graphite">
+                    <h2 className="font-display text-title text-ink">
                       {sector.name}
                     </h2>
                     <ul className="mt-4 space-y-1.5 text-sm text-muted">

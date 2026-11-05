@@ -7,25 +7,27 @@ import { asset } from "@/lib/site";
 
 export function CompanyIntroduction() {
   return (
-    <section className="relative bg-white py-16 lg:py-24">
-      <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-        <Reveal className="lg:col-span-5">
-          <div className="image-zoom relative aspect-[3/4] max-h-[32rem] overflow-hidden border border-border">
-            <Image
-              src={asset("photo3.jpg")}
-              alt="CCTV controls installation at LNG Hazira project"
-              fill
-              className="image-zoom-inner object-cover"
-              sizes="(max-width: 1024px) 100vw, 38vw"
-            />
-            <div className="absolute left-0 top-8 bg-amber px-3 py-1 text-xs font-semibold uppercase tracking-widest text-ink">
-              Field execution
+    <section className="section-pad bg-plate">
+      <Container className="grid min-w-0 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+        <Reveal className="min-w-0 lg:col-span-5">
+          <figure className="photo-card">
+            <div className="relative aspect-[3/4] max-h-[32rem] min-h-[16rem]">
+              <Image
+                src={asset("photo3.jpg")}
+                alt="CCTV controls installation at LNG Hazira project"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 38vw"
+              />
             </div>
-          </div>
+            <figcaption>
+              LNG Hazira, CCTV controls installation
+            </figcaption>
+          </figure>
         </Reveal>
-        <Reveal className="lg:col-span-7" delay={120}>
+        <Reveal className="min-w-0 lg:col-span-7" delay={120}>
           <SectionHeading
-            eyebrow="Company"
+            kicker="Company profile"
             title={companyIntro.headline}
             description={`Established in ${companyIntro.established}. ${companyIntro.summary}`}
           />

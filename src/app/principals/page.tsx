@@ -14,19 +14,19 @@ export default function PrincipalsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Principals"
+        kicker="Principals"
         title="Principal relationships"
         description="Product scopes and technical associations as published on the company principals page and profile."
       />
-      <section className="py-14 lg:py-20">
+      <section className="section-pad">
         <Container>
-          <ul className="divide-y divide-border border border-border bg-white">
+          <ul className="border-t border-ink">
             {principals.map((item) => (
               <li
                 key={item.name}
-                className="grid gap-4 p-6 lg:grid-cols-12 lg:gap-8 lg:p-8"
+                className="grid gap-4 border-b border-rule p-6 lg:grid-cols-12 lg:gap-8 lg:p-8"
               >
-                <h2 className="font-display text-lg font-semibold text-graphite lg:col-span-5">
+                <h2 className="font-display text-title text-ink lg:col-span-5">
                   {item.name}
                 </h2>
                 <div className="lg:col-span-7">

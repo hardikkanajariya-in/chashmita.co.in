@@ -1,19 +1,28 @@
 import type { Metadata } from "next";
-import { DM_Sans, Manrope } from "next/font/google";
+import { JetBrains_Mono, Onest, Syne } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
+  weight: ["700"],
   display: "swap",
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const onest = Onest({
+  variable: "--font-onest",
   subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  weight: ["500"],
   display: "swap",
 });
 
@@ -36,7 +45,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${manrope.variable} ${dmSans.variable} h-full`}>
+    <html
+      lang="en"
+      className={`${syne.variable} ${onest.variable} ${jetbrains.variable} js h-full`}
+    >
       <body className="flex min-h-full flex-col antialiased">
         <Header />
         <main className="flex-1">{children}</main>

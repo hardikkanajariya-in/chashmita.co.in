@@ -10,7 +10,6 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { asset } from "@/lib/site";
-import { cn } from "@/lib/cn";
 
 export function FeaturedProjects() {
   const allFeatured = getFeaturedProjects();
@@ -30,16 +29,16 @@ export function FeaturedProjects() {
   );
 
   return (
-    <section className="border-t border-border bg-surface-alt py-16 lg:py-24">
+    <section className="section-pad border-t border-ink bg-paper-2">
       <Container>
         <Reveal>
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div className="flex min-w-0 flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
-              eyebrow="Projects"
+              kicker="Project index"
               title="Selected work"
-              description="Documented projects from the company profile — scope and clients as originally published."
+              description="Documented projects from the company profile, scope and clients as originally published."
             />
-            <ButtonLink href="/projects/" variant="ghost" showArrow>
+            <ButtonLink href="/projects/" variant="ghost">
               Full project list
             </ButtonLink>
           </div>
@@ -52,67 +51,63 @@ export function FeaturedProjects() {
               type="button"
               aria-pressed={filterId === filter.id}
               onClick={() => setFilterId(filter.id)}
-              className="filter-chip border border-border bg-white px-4 py-2 text-sm font-medium text-ink"
+              className="filter-chip px-4 py-2 text-sm font-medium text-ink"
             >
               {filter.label}
             </button>
           ))}
         </div>
 
-        <ul className="relative mt-12 space-y-10 lg:space-y-14">
+        <ul className="relative mt-12 space-y-10 lg:space-y-12">
           {filtered.length === 0 ? (
-            <li className="border border-border bg-white p-8 text-sm text-ink-muted">
+            <li className="spec-card p-8 text-sm text-muted">
               No featured projects in this category. View the{" "}
-              <Link href="/projects/" className="font-semibold text-cobalt hover:underline">
+              <Link
+                href="/projects/"
+                className="font-medium text-ink underline decoration-accent underline-offset-[0.2em]"
+              >
                 full project list
               </Link>
               .
             </li>
           ) : (
-            filtered.map((project, index) => (
-              <li
-                key={project.slug}
-                className={cn(
-                  "filter-panel grid gap-8 border border-border bg-white lg:grid-cols-12 lg:gap-0",
-                  "card-lift",
-                )}
-              >
-                <div
-                  className={`image-zoom relative min-h-[16rem] lg:col-span-5 ${index % 2 === 1 ? "lg:order-2" : ""}`}
-                >
-                  {project.image ? (
-                    <Image
-                      src={asset(project.image)}
-                      alt=""
-                      fill
-                      className="image-zoom-inner object-cover"
-                      sizes="(max-width: 1024px) 100vw, 42vw"
-                    />
-                  ) : null}
-                </div>
-                <div
-                  className={`flex flex-col justify-center p-8 lg:col-span-7 lg:p-12 ${index % 2 === 1 ? "lg:order-1" : ""}`}
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-turquoise">
-                    {[project.client, project.industry, project.location]
-                      .filter(Boolean)
-                      .join(" · ")}
-                  </p>
-                  <h3 className="mt-3 font-display text-2xl font-semibold text-ink">
-                    {project.title}
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-ink-muted">
-                    {project.summary}
-                  </p>
-                  {project.scope ? (
-                    <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                      <span className="font-semibold text-ink">Scope: </span>
-                      {project.scope}
+            filtered.map((project) => {
+              const meta = [project.client, project.industry, project.location]
+                .filter(Boolean)
+                .join(", ");
+              return (
+                <li key={project.slug} className="spec-card grid min-w-0 lg:grid-cols-12">
+                  <div className="relative min-h-[16rem] min-w-0 lg:col-span-5">
+                    {project.image ? (
+                      <Image
+                        src={asset(project.image)}
+                        alt=""
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 42vw"
+                      />
+                    ) : null}
+                  </div>
+                  <div className="flex min-w-0 flex-col justify-center p-8 lg:col-span-7 lg:p-10">
+                    {meta ? (
+                      <p className="text-sm font-medium text-muted">{meta}</p>
+                    ) : null}
+                    <h3 className="mt-3 font-display text-title text-ink">
+                      {project.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-muted">
+                      {project.summary}
                     </p>
-                  ) : null}
-                </div>
-              </li>
-            ))
+                    {project.scope ? (
+                      <p className="mt-3 text-sm leading-relaxed text-muted">
+                        <span className="font-medium text-ink">Scope: </span>
+                        {project.scope}
+                      </p>
+                    ) : null}
+                  </div>
+                </li>
+              );
+            })
           )}
         </ul>
       </Container>

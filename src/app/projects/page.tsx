@@ -20,17 +20,17 @@ export default function ProjectsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Projects"
+        kicker="Projects"
         title="Prestigious projects"
         description="Project narratives and photographs from the company profile."
       />
-      <section className="py-14 lg:py-20">
+      <section className="section-pad">
         <Container className="space-y-16">
           {projects.map((project) => (
             <article
               key={project.slug}
               id={project.slug}
-              className="grid gap-8 border border-border bg-white lg:grid-cols-12"
+              className="spec-card grid min-w-0 lg:grid-cols-12"
             >
               {project.image ? (
                 <div className="relative min-h-[14rem] lg:col-span-4">
@@ -47,24 +47,24 @@ export default function ProjectsPage() {
                 <dl className="grid gap-2 text-sm text-muted sm:grid-cols-2">
                   {project.client ? (
                     <>
-                      <dt className="font-semibold text-graphite">Client</dt>
+                      <dt className="font-medium text-ink">Client</dt>
                       <dd>{project.client}</dd>
                     </>
                   ) : null}
                   {project.industry ? (
                     <>
-                      <dt className="font-semibold text-graphite">Industry</dt>
+                      <dt className="font-medium text-ink">Industry</dt>
                       <dd>{project.industry}</dd>
                     </>
                   ) : null}
                   {project.location ? (
                     <>
-                      <dt className="font-semibold text-graphite">Location</dt>
+                      <dt className="font-medium text-ink">Location</dt>
                       <dd>{project.location}</dd>
                     </>
                   ) : null}
                 </dl>
-                <h2 className="mt-6 font-display text-2xl font-semibold text-graphite">
+                <h2 className="mt-6 font-display text-title text-ink">
                   {project.title}
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-muted">
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
                 </p>
                 {project.scope ? (
                   <p className="mt-4 text-sm leading-relaxed text-muted">
-                    <span className="font-semibold text-graphite">Scope: </span>
+                    <span className="font-medium text-ink">Scope: </span>
                     {project.scope}
                   </p>
                 ) : null}

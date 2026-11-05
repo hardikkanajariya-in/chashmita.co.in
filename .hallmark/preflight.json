@@ -1,0 +1,18 @@
+{
+  "project": "D:\\NiftySolutions\\chashmita.co.in",
+  "framework": "Next.js 16 App Router, static export, Tailwind v4, TypeScript",
+  "routes": ["/", "/about/", "/services/", "/industries/", "/projects/", "/principals/", "/clients/", "/contact/"],
+  "preserved": [
+    "All navigation hrefs and page URLs",
+    "Company data in src/data/*",
+    "Contact mailto form wiring (name, email, phone, message handlers)",
+    "Existing project photography under public/images/site/",
+    "Logo GIF asset index_r1_c1.gif"
+  ],
+  "introduced": [
+    "Hallmark Terrazzo theme tokens (src/app/tokens.css, base.css)",
+    "Syne / Onest / JetBrains Mono typography",
+    "Spec-card layout system with hard offset shadows"
+  ],
+  "brand": "Existing logo GIF; palette remapped to Terrazzo ink + rust accent (prior navy/cobalt/amber tokens aliased)"
+}

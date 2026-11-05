@@ -10,26 +10,26 @@ import { Reveal } from "@/components/motion/Reveal";
 
 export function ClientsSection() {
   return (
-    <section className="border-t border-border bg-surface py-16 lg:py-24">
+    <section className="section-pad border-t border-ink bg-paper">
       <Container>
         <Reveal>
           <SectionHeading
-            eyebrow="Clients"
-            title="Customers and consultants"
+            kicker="Customers and consultants"
+            title="Approvals and references"
             description="Representative approvals and customers from the about page, with sector-wise lists documented on the customer list page."
           />
         </Reveal>
-        <div className="mt-10 grid gap-10 lg:grid-cols-2">
-          <Reveal delay={80}>
-            <div>
-              <h3 className="font-display text-lg font-semibold text-ink">
+        <div className="mt-10 grid min-w-0 gap-10 lg:grid-cols-2">
+          <Reveal delay={70}>
+            <div className="min-w-0">
+              <h3 className="font-display text-title text-ink">
                 Consultant approvals
               </h3>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {consultantApprovals.map((name) => (
                   <li
                     key={name}
-                    className="bg-white px-3 py-1.5 text-sm text-ink ring-1 ring-border transition hover:ring-cobalt/40"
+                    className="border border-ink bg-plate px-3 py-1.5 text-sm text-ink"
                   >
                     {name}
                   </li>
@@ -37,16 +37,16 @@ export function ClientsSection() {
               </ul>
             </div>
           </Reveal>
-          <Reveal delay={120}>
-            <div>
-              <h3 className="font-display text-lg font-semibold text-ink">
+          <Reveal delay={110}>
+            <div className="min-w-0">
+              <h3 className="font-display text-title text-ink">
                 Customers referenced in profile
               </h3>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {customerHighlights.map((name) => (
                   <li
                     key={name}
-                    className="bg-white px-3 py-1.5 text-sm text-ink ring-1 ring-border transition hover:ring-cobalt/40"
+                    className="border border-ink bg-plate px-3 py-1.5 text-sm text-ink"
                   >
                     {name}
                   </li>
@@ -55,13 +55,13 @@ export function ClientsSection() {
             </div>
           </Reveal>
         </div>
-        <Reveal delay={160}>
-          <p className="mt-8 text-sm text-ink-muted">
+        <Reveal delay={150}>
+          <p className="mt-8 text-sm text-muted">
             {clientGroups.length} industry groupings with detailed customer and
             consultant names are listed on the{" "}
             <Link
               href="/clients/"
-              className="font-semibold text-cobalt underline-offset-2 hover:text-brand hover:underline"
+              className="font-medium text-ink underline decoration-accent underline-offset-[0.2em]"
             >
               clients page
             </Link>
