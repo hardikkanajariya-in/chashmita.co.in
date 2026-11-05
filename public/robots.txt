@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chashmita.co.in/sitemap.xml
