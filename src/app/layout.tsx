@@ -3,6 +3,7 @@ import { JetBrains_Mono, Onest, Syne } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { PageTransitionLoader } from "@/components/ui/PageTransitionLoader";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${syne.variable} ${onest.variable} ${jetbrains.variable} js h-full`}
     >
       <body className="flex min-h-full flex-col antialiased">
+        <PageTransitionLoader />
         <CustomCursor />
         <Header />
         <main className="flex-1">{children}</main>

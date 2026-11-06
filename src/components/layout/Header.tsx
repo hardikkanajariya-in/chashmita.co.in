@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { headerNav, isNavGroup, NavItemGroup } from "@/data/navigation";
+import { headerNav, isNavGroup } from "@/data/navigation";
 import { site, asset } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -13,21 +13,45 @@ export function Header() {
   const pathname = usePathname();
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearCloseTimer = useCallback(() => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  }, []);
+
+  const handleMouseEnter = (label: string) => {
+    clearCloseTimer();
+    setOpenGroup(label);
+  };
+
+  const handleMouseLeave = () => {
+    clearCloseTimer();
+    // 220ms intent grace window so moving to the dropdown never closes accidentally
+    closeTimerRef.current = setTimeout(() => {
+      setOpenGroup(null);
+    }, 220);
+  };
 
   // Close dropdown on route change or click outside
   useEffect(() => {
+    clearCloseTimer();
     setOpenGroup(null);
-  }, [pathname]);
+  }, [pathname, clearCloseTimer]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        clearCloseTimer();
         setOpenGroup(null);
       }
     }
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
+        clearCloseTimer();
         setOpenGroup(null);
       }
     }
@@ -35,12 +59,14 @@ export function Header() {
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleKeyDown);
     return () => {
+      clearCloseTimer();
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [clearCloseTimer]);
 
   const toggleGroup = (groupLabel: string) => {
+    clearCloseTimer();
     setOpenGroup((current) => (current === groupLabel ? null : groupLabel));
   };
 
@@ -87,8 +113,8 @@ export function Header() {
                 <div
                   key={item.label}
                   className="relative"
-                  onMouseEnter={() => setOpenGroup(item.label)}
-                  onMouseLeave={() => setOpenGroup(null)}
+                  onMouseEnter={() => handleMouseEnter(item.label)}
+                  onMouseLeave={handleMouseLeave}
                 >
                   <button
                     type="button"
@@ -122,40 +148,49 @@ export function Header() {
                     </svg>
                   </button>
 
-                  {/* Dropdown Menu */}
+                  {/* Dropdown Menu with Seamless Hover Bridge */}
                   {isOpen ? (
-                    <div className="absolute left-0 top-full mt-1 w-64 border border-ink bg-paper p-2 shadow-lg animate-in fade-in slide-in-from-top-1 duration-150 z-50">
-                      <div className="border-b border-rule/50 px-3 py-1.5">
-                        <span className="font-outlier text-[10px] uppercase tracking-widest text-accent">
-                          {item.label} Section
-                        </span>
-                      </div>
-                      <div className="mt-1 space-y-0.5">
-                        {item.children.map((child) => {
-                          const childActive = pathname === child.href;
-                          return (
-                            <Link
-                              key={child.href}
-                              href={child.href}
-                              onClick={() => setOpenGroup(null)}
-                              className={cn(
-                                "block px-3 py-2 text-left transition-colors",
-                                childActive
-                                  ? "bg-paper-2 border-l-2 border-accent text-ink"
-                                  : "hover:bg-paper-2 hover:text-ink text-ink/90",
-                              )}
-                            >
-                              <div className="font-display text-xs font-bold">
-                                {child.label}
-                              </div>
-                              {child.description ? (
-                                <p className="mt-0.5 text-[11px] leading-tight text-muted">
-                                  {child.description}
-                                </p>
-                              ) : null}
-                            </Link>
-                          );
-                        })}
+                    <div
+                      className="absolute left-0 top-full pt-2 w-64 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                      onMouseEnter={() => handleMouseEnter(item.label)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <div className="border border-ink bg-paper p-2 shadow-xl">
+                        <div className="border-b border-rule/50 px-3 py-1.5">
+                          <span className="font-outlier text-[10px] uppercase tracking-widest text-accent">
+                            {item.label} Section
+                          </span>
+                        </div>
+                        <div className="mt-1 space-y-0.5">
+                          {item.children.map((child) => {
+                            const childActive = pathname === child.href;
+                            return (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                onClick={() => {
+                                  clearCloseTimer();
+                                  setOpenGroup(null);
+                                }}
+                                className={cn(
+                                  "block px-3 py-2 text-left transition-colors",
+                                  childActive
+                                    ? "bg-paper-2 border-l-2 border-accent text-ink"
+                                    : "hover:bg-paper-2 hover:text-ink text-ink/90",
+                                )}
+                              >
+                                <div className="font-display text-xs font-bold">
+                                  {child.label}
+                                </div>
+                                {child.description ? (
+                                  <p className="mt-0.5 text-[11px] leading-tight text-muted">
+                                    {child.description}
+                                  </p>
+                                ) : null}
+                              </Link>
+                            );
+                          })}
+                        </div>
                       </div>
                     </div>
                   ) : null}
