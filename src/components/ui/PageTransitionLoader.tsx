@@ -1,30 +1,37 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
 
 export function PageTransitionLoader() {
   const pathname = usePathname();
-  const [loading, setLoading] = useState(false);
+  const [active, setActive] = useState(false);
   const [progress, setProgress] = useState(0);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const safetyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const fadeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const finishTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // When pathname changes, complete and reset the loader
+  const resetLoader = useCallback(() => {
+    setProgress(100);
+    if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
+    fadeTimeoutRef.current = setTimeout(() => {
+      setActive(false);
+      setProgress(0);
+    }, 200);
+  }, []);
+
+  // When pathname changes, immediately finish and fade out
   useEffect(() => {
-    if (loading) {
-      setProgress(100);
-      const hideTimer = setTimeout(() => {
-        setLoading(false);
-        setProgress(0);
-      }, 250);
-      return () => clearTimeout(hideTimer);
+    if (active) {
+      resetLoader();
     }
-  }, [pathname, loading]);
+  }, [pathname, active, resetLoader]);
 
   useEffect(() => {
+    function normalize(path: string) {
+      return path.split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
+    }
+
     function handleClick(e: MouseEvent) {
-      // Find closest anchor tag
       const target = (e.target as HTMLElement).closest("a");
       if (!target) return;
 
@@ -32,7 +39,6 @@ export function PageTransitionLoader() {
       const targetAttr = target.getAttribute("target");
       const downloadAttr = target.getAttribute("download");
 
-      // Skip non-links, external links, new tabs, downloads, or pure hash jumps
       if (
         !href ||
         href.startsWith("http://") ||
@@ -45,73 +51,52 @@ export function PageTransitionLoader() {
         return;
       }
 
-      // Check if navigating to the same URL
-      const currentUrl = window.location.pathname;
-      const targetUrl = href.split("?")[0].split("#")[0];
+      const currentNorm = normalize(window.location.pathname);
+      const targetNorm = normalize(href);
 
-      if (targetUrl === currentUrl || (targetUrl === "" && href.startsWith("#"))) {
+      // Do not trigger if clicking the page we are already on
+      if (currentNorm === targetNorm) {
         return;
       }
 
-      // Start transition animation
-      setLoading(true);
-      setProgress(25);
+      // Start sleek top progress bar
+      setActive(true);
+      setProgress(35);
 
-      if (timerRef.current) clearInterval(timerRef.current);
-      if (safetyTimeoutRef.current) clearTimeout(safetyTimeoutRef.current);
+      if (finishTimeoutRef.current) clearTimeout(finishTimeoutRef.current);
 
-      timerRef.current = setInterval(() => {
-        setProgress((prev) => {
-          if (prev < 65) return prev + 15;
-          if (prev < 85) return prev + 5;
-          return prev;
-        });
-      }, 150);
+      // Smooth step to 75%
+      setTimeout(() => setProgress(75), 120);
 
-      // Safety timeout: auto-hide after 6 seconds if navigation didn't take place
-      safetyTimeoutRef.current = setTimeout(() => {
-        setLoading(false);
-        setProgress(0);
-      }, 6000);
+      // Max safety: automatically finish within 1 second so it NEVER gets stuck
+      finishTimeoutRef.current = setTimeout(() => {
+        resetLoader();
+      }, 1000);
     }
 
     document.addEventListener("click", handleClick, { capture: true });
     return () => {
       document.removeEventListener("click", handleClick, { capture: true });
-      if (timerRef.current) clearInterval(timerRef.current);
-      if (safetyTimeoutRef.current) clearTimeout(safetyTimeoutRef.current);
+      if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
+      if (finishTimeoutRef.current) clearTimeout(finishTimeoutRef.current);
     };
-  }, []);
+  }, [resetLoader]);
 
-  if (!loading && progress === 0) return null;
+  if (!active && progress === 0) return null;
 
   return (
     <div
-      className="pointer-events-none fixed inset-x-0 top-0 z-[10000]"
+      className="pointer-events-none fixed inset-x-0 top-0 z-[10000] h-[2.5px] overflow-hidden bg-transparent"
       aria-hidden="true"
     >
-      {/* Top Accent Progress Bar */}
-      <div className="h-[3px] w-full overflow-hidden bg-transparent">
-        <div
-          className="h-full bg-accent shadow-[0_0_8px_var(--color-accent)] transition-all ease-out"
-          style={{
-            width: `${progress}%`,
-            transitionDuration: progress === 100 ? "150ms" : "250ms",
-          }}
-        />
-      </div>
-
-      {/* Industrial Spec Transit Badge */}
-      <div className="absolute right-4 top-3 animate-in fade-in slide-in-from-top-1 duration-200">
-        <div className="flex items-center gap-2 border border-ink bg-paper px-3 py-1 text-[11px] font-outlier font-semibold uppercase tracking-wider text-ink shadow-md">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping bg-accent opacity-75" />
-            <span className="relative inline-flex h-2 w-2 bg-accent" />
-          </span>
-          <span>SYSTEM LOADING...</span>
-        </div>
-      </div>
+      <div
+        className="h-full bg-accent shadow-[0_0_6px_var(--color-accent)] transition-all ease-out"
+        style={{
+          width: `${progress}%`,
+          transitionDuration: progress === 100 ? "120ms" : "200ms",
+          opacity: progress === 100 ? 0 : 1,
+        }}
+      />
     </div>
   );
 }
-

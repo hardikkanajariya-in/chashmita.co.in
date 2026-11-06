@@ -99,19 +99,19 @@ html {
 @media (hover: hover) and (pointer: fine) {
   .spec-card:hover,
   .photo-card:hover {
-    transform: translate3d(0, -4px, 0);
-    box-shadow: 18px 18px 0 var(--color-ink);
+    transform: translate3d(0, -2px, 0);
+    box-shadow: 8px 8px 0 var(--color-ink);
   }
 
   .photo-card:hover img {
-    scale: 1.03;
+    scale: 1.02;
   }
 }
 
 .spec-card:active,
 .photo-card:active {
   transform: translate3d(0, 0, 0);
-  box-shadow: 10px 10px 0 var(--color-ink);
+  box-shadow: 4px 4px 0 var(--color-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {

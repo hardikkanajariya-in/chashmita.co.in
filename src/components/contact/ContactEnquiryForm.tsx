@@ -140,7 +140,7 @@ export function ContactEnquiryForm() {
             onBlur={() => setTouched((t) => ({ ...t, name: true }))}
             className={fieldClass("name", nameValid)}
             autoComplete="name"
-            placeholder="e.g. S. Patel"
+            placeholder="Full name"
             disabled={status === "submitting"}
           />
         </label>
@@ -157,7 +157,7 @@ export function ContactEnquiryForm() {
             onBlur={() => setTouched((t) => ({ ...t, email: true }))}
             className={fieldClass("email", emailValid)}
             autoComplete="email"
-            placeholder="name@company.com"
+            placeholder="email@company.com"
             disabled={status === "submitting"}
             aria-invalid={touched.email && !emailValid}
           />
@@ -174,7 +174,7 @@ export function ContactEnquiryForm() {
           onChange={(e) => setPhone(e.target.value)}
           className="field-input w-full px-4 py-3 text-sm text-ink"
           autoComplete="tel"
-          placeholder="+91 98765 43210"
+          placeholder="+91 00000 00000"
           disabled={status === "submitting"}
         />
       </label>
@@ -191,7 +191,7 @@ export function ContactEnquiryForm() {
           onChange={(e) => setMessage(e.target.value)}
           onBlur={() => setTouched((t) => ({ ...t, message: true }))}
           className={fieldClass("message", messageValid)}
-          placeholder="Please describe your project location, scope of electrical / lighting / CCTV works, and timeline..."
+          placeholder="Describe your project requirement, engineering scope, or location..."
           disabled={status === "submitting"}
         />
       </label>
@@ -203,7 +203,7 @@ export function ContactEnquiryForm() {
           className="btn-interact btn-liquid inline-flex items-center justify-center bg-ink px-7 py-3.5 text-sm font-medium text-paper [--btn-liquid-bg:var(--color-accent)] hover:text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)] disabled:opacity-60"
         >
           <span className="relative z-1">
-            {status === "submitting" ? "Transmitting Enquiry..." : "Send Project Enquiry"}
+            {status === "submitting" ? "Sending..." : "Send enquiry"}
           </span>
         </button>
 

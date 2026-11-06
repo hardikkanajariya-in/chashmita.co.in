@@ -155,7 +155,7 @@ export function CareersApplicationForm() {
             onChange={(e) => setFirstName(e.target.value)}
             onBlur={() => setTouched((t) => ({ ...t, firstName: true }))}
             className={fieldClass("firstName", firstNameValid)}
-            placeholder="e.g. Rajesh"
+            placeholder="First name"
             disabled={status === "submitting"}
           />
         </label>
@@ -170,7 +170,7 @@ export function CareersApplicationForm() {
             onChange={(e) => setLastName(e.target.value)}
             onBlur={() => setTouched((t) => ({ ...t, lastName: true }))}
             className={fieldClass("lastName", lastNameValid)}
-            placeholder="e.g. Sharma"
+            placeholder="Last name"
             disabled={status === "submitting"}
           />
         </label>
@@ -189,7 +189,7 @@ export function CareersApplicationForm() {
             onChange={(e) => setContactNo(e.target.value)}
             onBlur={() => setTouched((t) => ({ ...t, contactNo: true }))}
             className={fieldClass("contactNo", contactNoValid)}
-            placeholder="+91 98765 43210"
+            placeholder="+91 00000 00000"
             disabled={status === "submitting"}
           />
         </label>
@@ -205,7 +205,7 @@ export function CareersApplicationForm() {
             onChange={(e) => setEmail(e.target.value)}
             onBlur={() => setTouched((t) => ({ ...t, email: true }))}
             className={fieldClass("email", emailValid)}
-            placeholder="candidate@example.com"
+            placeholder="email@example.com"
             disabled={status === "submitting"}
             aria-invalid={touched.email && !emailValid}
           />
@@ -243,7 +243,7 @@ export function CareersApplicationForm() {
           value={pastExperience}
           onChange={(e) => setPastExperience(e.target.value)}
           className="field-input w-full px-4 py-3 text-sm text-ink"
-          placeholder="e.g. 5 Years in Refineries & Petrochemical Electrical Engineering"
+          placeholder="e.g. 5 years in industrial electrical EPC"
           disabled={status === "submitting"}
         />
       </label>
@@ -258,7 +258,7 @@ export function CareersApplicationForm() {
           value={remark}
           onChange={(e) => setRemark(e.target.value)}
           className="field-input w-full px-4 py-3 text-sm text-ink"
-          placeholder="Briefly state your qualifications, certifications (e.g. Philips / Bosch / Siemens trained), current CTC, and notice period..."
+          placeholder="Qualifications, certifications, current notice period, or notes..."
           disabled={status === "submitting"}
         />
       </label>
@@ -270,7 +270,7 @@ export function CareersApplicationForm() {
           className="btn-interact btn-liquid inline-flex items-center justify-center bg-ink px-7 py-3.5 text-sm font-medium text-paper [--btn-liquid-bg:var(--color-accent)] hover:text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)] disabled:opacity-60"
         >
           <span className="relative z-1">
-            {status === "submitting" ? "Submitting Application..." : "Submit Application"}
+            {status === "submitting" ? "Submitting..." : "Submit application"}
           </span>
         </button>
 

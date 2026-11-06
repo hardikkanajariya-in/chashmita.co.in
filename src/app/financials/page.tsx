@@ -98,11 +98,9 @@ export default function FinancialsPage() {
                   </blockquote>
 
                   <p className="mt-6 text-sm leading-relaxed text-muted">
-                    This audited benchmark established Chashmita Engineers as a
-                    robust mid-tier turnkey electrical, instrumentation, and
-                    communication contracting powerhouse capable of executing
-                    multi-crore infrastructure assignments for government and
-                    industrial majors.
+                    Audited turnover record of Chashmita Engineers Pvt. Ltd. for the
+                    financial year 2006–2007, reflecting execution of turnkey electrical,
+                    instrumentation, and industrial communication projects.
                   </p>
                 </div>
 

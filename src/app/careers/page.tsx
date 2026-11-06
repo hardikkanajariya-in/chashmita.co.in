@@ -77,16 +77,9 @@ export default function CareersPage() {
                   </h2>
 
                   <p className="mt-4 text-sm leading-relaxed text-muted">
-                    Chashmita Engineers, an evolving organization, is always on
-                    the lookout for project and technical professionals including
-                    marketing and field service engineers who are enthusiastic and
-                    dynamic.
-                  </p>
-
-                  <p className="mt-3 text-sm leading-relaxed text-muted">
-                    If you have a passion for engineering excellence, rigorous
-                    safety standards, and precision execution on industrial sites,
-                    we are just the place for you.
+                    Chashmita Engineers is always on the lookout for project
+                    engineers, field technicians, and marketing professionals
+                    who are enthusiastic and dynamic.
                   </p>
 
                   <div className="mt-6 border-t border-rule pt-6">
@@ -126,7 +119,7 @@ export default function CareersPage() {
                     Direct Resume Submissions
                   </span>
                   <h3 className="mt-1 font-display text-xl font-bold text-ink">
-                    Direct Email Submissions
+                    Email Applications
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">
                     You can also email your updated resume with your current CTC,

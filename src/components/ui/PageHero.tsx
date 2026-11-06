@@ -15,7 +15,7 @@ export function PageHero({
 }: PageHeroProps) {
   return (
     <section className={cn("band-paper border-b border-ink", className)}>
-      <div className="container section-pad">
+      <div className="container py-8 sm:py-10 md:py-12">
         {kicker ? (
           <p className="mb-3 text-sm font-medium text-muted">{kicker}</p>
         ) : null}

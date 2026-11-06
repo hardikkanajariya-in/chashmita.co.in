@@ -92,10 +92,9 @@ export default function CertificationsPage() {
                   </blockquote>
 
                   <p className="mt-6 text-sm leading-relaxed text-muted">
-                    This certified framework governs every facet of our operations:
-                    initial electrical and telecommunications design, supply chain
-                    integrity with OEM principals, rigorous on-site installation,
-                    and standardized commissioning and field service protocols.
+                    Formal ISO 9001:2000 quality management certification covering the
+                    supply, installation, testing, commissioning, operation and maintenance
+                    of industrial CCTV and communications systems.
                   </p>
 
                   {/* Attached ISO Certificate Action */}
