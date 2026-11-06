@@ -17,9 +17,9 @@ export default function CertificationsPage() {
   return (
     <>
       <PageHero
-        kicker="Quality Standards & Industrial Recognition"
+        kicker="Certifications & Awards"
         title="Certifications & awards"
-        description="ISO 9001:2000 quality framework, formal corporate Quality Policy, and national recognition including the Udyog Rattan Award."
+        description="ISO 9001:2000 quality certification, company Quality Policy, and the Udyog Rattan Award."
       />
 
       {/* Highlights Strip */}

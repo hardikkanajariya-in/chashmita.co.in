@@ -24,9 +24,9 @@ export default function ClientsPage() {
   return (
     <>
       <PageHero
-        kicker="Customer & Consultant Roster"
+        kicker="Customer & Consultant List"
         title="Customers and consultants"
-        description="Public sector undertakings, multinational conglomerates, EPC leaders, and accredited consultants documented across our 35+ year turnkey track record."
+        description="Government organizations, public sector undertakings, industrial enterprises, and approved consultants from our customer list."
       />
 
       {/* Stats Summary Strip */}
@@ -46,7 +46,7 @@ export default function ClientsPage() {
                 Industry Sectors
               </span>
               <p className="mt-1 font-display text-2xl font-bold text-ink">
-                {clientGroups.length} Verticals
+                {clientGroups.length} Sectors
               </p>
             </div>
             <div>
@@ -54,38 +54,38 @@ export default function ClientsPage() {
                 Consultant Approvals
               </span>
               <p className="mt-1 font-display text-2xl font-bold text-ink">
-                {consultantApprovals.length} Top Agencies
+                {consultantApprovals.length} Approved Agencies
               </p>
             </div>
             <div>
               <span className="font-outlier text-xs uppercase tracking-wider text-muted">
-                Blue-Chip PSUs
+                Government & PSUs
               </span>
               <p className="mt-1 font-display text-2xl font-bold text-ink">
-                Pan-India
+                Gujarat & Pan-India
               </p>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Featured Tier-1 Clients & Consultant Approvals Showcase */}
-      <section className="border-b border-ink bg-plate py-12 lg:py-16">
-        <Container className="space-y-12">
+      {/* Featured Clients & Consultant Approvals Showcase */}
+      <section className="border-b border-ink bg-plate py-10 lg:py-14">
+        <Container className="space-y-10">
           {/* Key Customer Highlights */}
           <Reveal>
             <div>
               <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                   <span className="font-outlier text-xs uppercase tracking-widest text-accent">
-                    Enterprise Footprint
+                    Customer Highlights
                   </span>
                   <h2 className="mt-1 font-display text-2xl text-ink">
-                    Key Client Highlights
+                    Key Customers
                   </h2>
                 </div>
                 <span className="font-outlier text-xs text-muted">
-                  Heavy Industrial & Infrastructure PSUs
+                  Industrial & Government Undertakings
                 </span>
               </div>
 
@@ -104,18 +104,18 @@ export default function ClientsPage() {
 
           {/* Consultant Approvals */}
           <Reveal delay={100}>
-            <div className="border-t border-rule pt-10">
+            <div className="border-t border-rule pt-8">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                   <span className="font-outlier text-xs uppercase tracking-widest text-accent">
-                    Accredited Scope
+                    Consultant Approvals
                   </span>
                   <h2 className="mt-1 font-display text-2xl text-ink">
-                    Approved Consultant Agencies
+                    Approved Consultants
                   </h2>
                 </div>
                 <span className="font-outlier text-xs text-muted">
-                  Design Specifications & Tender Compliance
+                  Empanelled Engineering & Inspection Agencies
                 </span>
               </div>
 
@@ -203,10 +203,8 @@ export default function ClientsPage() {
                 Customer Listing Note
               </span>
               <p className="mt-2 max-w-4xl text-sm leading-relaxed text-muted">
-                Entity names indicate documented project executions, supply
-                contracts, or consultant approvals at the time of documentation,
-                rather than an assertion of current active commercial retainers
-                with every organization listed.
+                Names listed reflect project executions, supply contracts, or
+                consultant approvals documented in the company records.
               </p>
             </div>
           </Reveal>

@@ -28,9 +28,9 @@ export default function PrincipalsPage() {
   return (
     <>
       <PageHero
-        kicker="Principals & OEM Alliances"
-        title="Principal relationships"
-        description="Original equipment manufacturers, certified design software, and technical support frameworks documented across our turnkey engineering practice."
+        kicker="Our Principals"
+        title="Our principals"
+        description="Principal manufacturers, design software, and technical support documented in the company records."
       />
 
       {/* Highlights Strip */}
@@ -39,18 +39,18 @@ export default function PrincipalsPage() {
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-8">
             <div>
               <span className="font-outlier text-xs uppercase tracking-wider text-muted">
-                Documented Alliances
+                Manufacturers
               </span>
               <p className="mt-1 font-display text-2xl font-bold text-ink">
-                8 OEM Brands
+                8 Companies
               </p>
             </div>
             <div>
               <span className="font-outlier text-xs uppercase tracking-wider text-muted">
-                Global Footprint
+                Origins
               </span>
               <p className="mt-1 font-display text-2xl font-bold text-ink">
-                India · EU · Norway
+                India · Europe · Norway
               </p>
             </div>
             <div>

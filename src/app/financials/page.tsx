@@ -16,9 +16,9 @@ export default function FinancialsPage() {
   return (
     <>
       <PageHero
-        kicker="Financial Governance & Credibility"
+        kicker="Financial Details"
         title="Financials & rating"
-        description="Historical audited turnover benchmarks, CRISIL rating solvency accreditation, and statutory commercial standing documented in the company archives."
+        description="Audited turnover records, CRISIL rating certificate, and statutory details from the company archives."
       />
 
       {/* KPI Overview Strip */}

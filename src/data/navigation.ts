@@ -27,22 +27,22 @@ export const headerNav: readonly NavItem[] = [
       {
         label: "About Us",
         href: "/about/",
-        description: "34+ years turnkey engineering legacy & leadership",
+        description: "Company background, leadership, and founding in 1986",
       },
       {
         label: "Certifications & Awards",
         href: "/certifications/",
-        description: "ISO 9001:2000, Quality Policy & Udyog Rattan Award",
+        description: "ISO 9001:2000, Quality Policy, and Udyog Rattan Award",
       },
       {
-        label: "Audited Financials",
+        label: "Financials",
         href: "/financials/",
-        description: "Turnover records & CRISIL SE 2B rating certificate",
+        description: "Turnover figures and CRISIL rating certificate",
       },
       {
         label: "Careers",
         href: "/careers/",
-        description: "Engineering vacancies in projects, CCTV & automation",
+        description: "Open opportunities in engineering and projects",
       },
     ],
   },
@@ -55,12 +55,12 @@ export const headerNav: readonly NavItem[] = [
       {
         label: "Our Principals",
         href: "/principals/",
-        description: "Philips, Bosch, Sartorius & R. Stahl associations",
+        description: "Philips, Bosch, Sartorius, and R. Stahl associations",
       },
       {
-        label: "Clients & Consultants",
+        label: "Customers & Consultants",
         href: "/clients/",
-        description: "IOCL, Reliance, BHEL & consultant approvals",
+        description: "Customer list and approved consultants",
       },
     ],
   },
