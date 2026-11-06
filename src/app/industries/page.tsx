@@ -82,11 +82,6 @@ export default function IndustriesPage() {
               );
             })}
           </ul>
-          <p className="mt-12 max-w-2xl text-sm text-muted">
-            Lists reflect names published on the original customer list page.
-            They indicate project experience documented at the time of
-            publication, not necessarily current commercial relationships.
-          </p>
         </Container>
       </section>
     </>

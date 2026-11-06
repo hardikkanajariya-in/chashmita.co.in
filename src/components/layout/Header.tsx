@@ -19,8 +19,8 @@ export function Header() {
           className="flex min-w-0 items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-focus)]"
         >
           <Image
-            src={asset("index_r1_c1.gif")}
-            alt=""
+            src={asset("logo.png")}
+            alt={site.name}
             width={48}
             height={28}
             className="h-7 w-auto shrink-0"

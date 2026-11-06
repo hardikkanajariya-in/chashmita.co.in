@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono, Onest, Syne } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -43,10 +44,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png" },
     ],
     apple: [
-      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png" },
     ],
   },
 };
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${syne.variable} ${onest.variable} ${jetbrains.variable} js h-full`}
     >
       <body className="flex min-h-full flex-col antialiased">
+        <CustomCursor />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

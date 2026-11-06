@@ -99,9 +99,9 @@ export function ContactEnquiryForm() {
       </label>
       <button
         type="submit"
-        className="btn-interact inline-flex items-center justify-center bg-ink px-6 py-3.5 text-sm font-medium text-paper hover:bg-ink-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)]"
+        className="btn-interact btn-liquid inline-flex items-center justify-center bg-ink px-6 py-3.5 text-sm font-medium text-paper [--btn-liquid-bg:var(--color-accent)] hover:text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)]"
       >
-        Send enquiry
+        <span className="relative z-1">Send enquiry</span>
       </button>
     </form>
   );

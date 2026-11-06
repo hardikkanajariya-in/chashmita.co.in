@@ -24,7 +24,7 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
           observer.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.08, rootMargin: "0px 0px -50px 0px" },
     );
 
     observer.observe(node);
@@ -34,7 +34,7 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
   return (
     <div
       ref={ref}
-      className={cn("reveal", visible && "is-visible", className)}
+      className={cn("reveal scroll-driven-reveal", visible && "is-visible", className)}
       style={{ "--reveal-delay": `${delay}ms` } as CSSProperties}
     >
       {children}
