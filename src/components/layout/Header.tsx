@@ -36,7 +36,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-0.5 xl:gap-1 lg:flex" aria-label="Primary">
           {mainNav.map((item) => {
             const active =
               item.href === "/"
@@ -48,7 +48,7 @@ export function Header() {
                 href={item.href}
                 data-active={active ? "true" : "false"}
                 className={cn(
-                  "nav-link px-3 py-2.5 text-sm font-medium",
+                  "nav-link px-2 py-2 text-xs font-medium xl:px-3 xl:text-sm",
                   active ? "text-ink" : "text-muted hover:text-ink",
                 )}
               >

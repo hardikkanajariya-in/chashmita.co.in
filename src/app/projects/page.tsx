@@ -80,6 +80,21 @@ export default function ProjectsPage() {
                     {project.scope}
                   </p>
                 ) : null}
+                {project.specifications ? (
+                  <div className="mt-6 border-t border-rule/60 pt-4">
+                    <span className="font-outlier text-xs font-semibold uppercase tracking-wider text-accent">
+                      Verified Technical Deliverables:
+                    </span>
+                    <ul className="mt-2.5 space-y-1.5 font-outlier text-xs text-muted">
+                      {project.specifications.map((spec, sIdx) => (
+                        <li key={sIdx} className="flex items-start gap-2">
+                          <span className="text-accent font-bold">✓</span>
+                          <span>{spec}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
               </div>
             </article>
           ))}
