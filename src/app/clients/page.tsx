@@ -191,13 +191,6 @@ export default function ClientsPage() {
                       ))}
                     </ul>
                   </div>
-
-                  {/* Sector Footer Tag */}
-                  <div className="mt-6 border-t border-rule/60 pt-3">
-                    <span className="font-outlier text-[11px] text-muted/70">
-                      SEC // {String(index + 1).padStart(2, "0")} · Documented Turnkey Scope
-                    </span>
-                  </div>
                 </article>
               </Reveal>
             ))}
