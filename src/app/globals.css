@@ -119,25 +119,7 @@ button.spec-card {
   transform: scaleX(1);
 }
 
-.mobile-drawer {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows var(--dur-short) var(--ease-out);
-}
 
-.mobile-drawer[data-open="true"] {
-  grid-template-rows: 1fr;
-}
-
-.mobile-drawer > div {
-  overflow: hidden;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mobile-drawer {
-    transition: none;
-  }
-}
 
 .field-input {
   border: var(--rule-hair) solid var(--color-ink);
@@ -188,6 +170,56 @@ button.spec-card {
   pointer-events: none;
   position: absolute;
   visibility: hidden;
+}
+
+:root {
+  --spring-easing: linear(0, 0.016 0.5%, 0.06 1%, 0.226 2%, 1.116 5.4%, 1.375 6.6%, 1.527 7.7%, 1.565 8.2%, 1.585 8.8%, 1.581 9.3%, 1.559 9.8%, 1.458 10.9%, 0.937 14.3%, 0.784 15.5%, 0.693 16.6%, 0.67 17.1%, 0.657 17.7%, 0.671 18.7%, 0.729 19.8%, 1.042 23.3%, 1.13 24.5%, 1.182 25.6%, 1.201 26.7%, 1.192 27.7%, 1.156 28.8%, 0.977 32.2%, 0.925 33.4%, 0.894 34.5%, 0.882 35.6%, 0.887 36.6%, 0.907 37.7%, 1.045 42.4%, 1.069 44.5%, 1.059 46.3%, 0.979 50.9%, 0.96 53.4%, 0.966 55.3%, 1.013 59.9%, 1.024 62.3%, 0.986 71.2%, 1.008 79.9%, 0.995 88.9%, 1);
+}
+
+.btn-interact {
+  transition:
+    background-color var(--dur-short) var(--ease-out),
+    color var(--dur-short) var(--ease-out),
+    box-shadow var(--dur-short) var(--ease-out),
+    text-decoration-color var(--dur-short) var(--ease-out),
+    scale 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-timing-function:
+    var(--ease-out),
+    var(--ease-out),
+    var(--ease-out),
+    var(--ease-out),
+    var(--spring-easing, cubic-bezier(0.34, 1.56, 0.64, 1));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-interact:hover {
+    scale: 1.03;
+  }
+}
+
+.btn-interact:active {
+  scale: 0.97;
+}
+
+.cta-arrow {
+  transition: translate var(--dur-short) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-interact:hover .cta-arrow {
+    translate: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-interact:hover,
+  .btn-interact:active {
+    scale: 1;
+  }
+
+  .btn-interact:hover .cta-arrow {
+    translate: none;
+  }
 }
 
 .spec-table {

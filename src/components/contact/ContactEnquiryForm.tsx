@@ -99,7 +99,7 @@ export function ContactEnquiryForm() {
       </label>
       <button
         type="submit"
-        className="inline-flex items-center justify-center bg-ink px-6 py-3.5 text-sm font-medium text-paper transition hover:bg-ink-2 active:translate-y-px"
+        className="btn-interact inline-flex items-center justify-center bg-ink px-6 py-3.5 text-sm font-medium text-paper hover:bg-ink-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)]"
       >
         Send enquiry
       </button>
